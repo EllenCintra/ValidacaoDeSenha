@@ -1,2 +1,2 @@
 # Validação de Senha
-Aplicação que expõe uma api web que valida uma senha.
+Aplicação que expõe uma api web para validação de senha.
