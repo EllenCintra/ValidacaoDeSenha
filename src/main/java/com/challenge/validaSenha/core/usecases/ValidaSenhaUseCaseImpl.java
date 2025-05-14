@@ -41,6 +41,6 @@ public class ValidaSenhaUseCaseImpl implements ValidaSenhaUseCase{
             }
         }
 
-        return possuiDigito && possuiMinusculo && possuiMaiusculo && possuiEspecial;
+        return possuiDigito && possuiMinusculo && possuiMaiusculo && possuiEspecial; //todo: implementar validacoes
     }
 }
