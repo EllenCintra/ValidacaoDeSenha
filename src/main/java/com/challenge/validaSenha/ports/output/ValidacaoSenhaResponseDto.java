@@ -6,4 +6,12 @@ public class ValidacaoSenhaResponseDto {
     public ValidacaoSenhaResponseDto(boolean senha) {
         this.senhaValida = senha;
     }
+
+    public boolean isSenhaValida() {
+        return senhaValida;
+    }
+
+    public void setSenhaValida(boolean senhaValida) {
+        this.senhaValida = senhaValida;
+    }
 }

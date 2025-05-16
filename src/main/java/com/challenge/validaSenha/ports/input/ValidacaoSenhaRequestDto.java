@@ -7,14 +7,7 @@ public class ValidacaoSenhaRequestDto {
         this.senha = senha;
     }
 
-    public ValidacaoSenhaRequestDto() {
-    }
-
     public String getSenha() {
         return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 }

@@ -30,17 +30,26 @@ public class ValidaSenhaUseCaseImpl implements ValidaSenhaUseCase{
         boolean possuiEspecial = false;
         Set<Character> caracteres = new HashSet<>();
 
-
         for (char c : senha.toCharArray()) {
-            if (Character.isWhitespace(c)) {
-                return false; // Espaços em branco não são permitidos
-            }
+            if (Character.isWhitespace(c))
+                return false;
 
-            if (!caracteres.add(c)) {
-                return false; // Caracteres repetidos não são permitidos
-            }
+            if (!caracteres.add(c)) //verifica carater repetido
+                return false;
+
+            if (Character.isDigit(c))
+                possuiDigito = true;
+
+            else if (Character.isLowerCase(c))
+                possuiMinusculo = true;
+
+            else if (Character.isUpperCase(c))
+                possuiMaiusculo = true;
+
+            else if (CARACTERES_ESPECIAIS.contains(String.valueOf(c)))
+                possuiEspecial = true;
         }
 
-        return possuiDigito && possuiMinusculo && possuiMaiusculo && possuiEspecial; //todo: implementar validacoes
+        return possuiDigito && possuiMinusculo && possuiMaiusculo && possuiEspecial;
     }
 }
