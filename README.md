@@ -28,7 +28,7 @@ A API estará disponível em http://localhost:8080.
 
 Detalhes sobre a solução:
 
-Arquitetura Hexagonal: Para isolar a lógica de negócios da comunicação com sistemas externos.
+Arquitetura Hexagonal: Isola a lógica de negócios da comunicação com sistemas externos.
 
 Domínio (Core): Contém as classes e interfaces que representam a lógica de negócios da aplicação (ex: ValidacaoStrategy e ValidacaoSenhaUseCase).
 
