@@ -2,7 +2,6 @@ package com.challenge.validaSenha.adapters.inbound;
 
 import com.challenge.validaSenha.ports.ValidaSenhaPort;
 import com.challenge.validaSenha.core.dtos.ValidacaoSenhaRequestDto;
-import com.challenge.validaSenha.core.dtos.Data;
 import com.challenge.validaSenha.core.dtos.ValidacaoSenhaResponseDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

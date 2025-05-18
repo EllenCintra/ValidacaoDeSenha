@@ -1,4 +1,4 @@
-package com.challenge.validaSenha.core.dtos;
+Mpackage com.challenge.validaSenha.adapters.inbound;
 
 public class Data<T> {
     private T data;
