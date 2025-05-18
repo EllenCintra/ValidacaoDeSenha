@@ -49,7 +49,7 @@ Premissas Assumidas
 
 Validação de Caracteres Repetidos:
 
-Premissa: A validação de caracteres repetidos é case-sensitive. Por exemplo, "Aa" seria considerado como contendo caracteres repetidos.
+Premissa: A validação de caracteres repetidos é case-sensitive. Por exemplo, "Aa" não foi considerado como contendo caracteres repetidos.
 
 Motivação: Seguir a especificação mais comum para validação de senhas, onde maiúsculas e minúsculas são consideradas diferentes.
 
