@@ -1,8 +1,11 @@
 Validacao de Senha API
 
 Como executar o projeto?
+
 Pré-requisitos:
+
 Java 24
+
 Maven 3.9.7 ou 3.9.9
 
 Clonar o Repositório:
