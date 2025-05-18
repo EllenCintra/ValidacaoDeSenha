@@ -12,7 +12,6 @@ public class ValidaSenhaUseCaseImpl implements ValidaSenhaUseCase{
 
     private final List<ValidacaoStrategy> validacoes;
 
-    // Injeção de dependência das estratégias de validação
     public ValidaSenhaUseCaseImpl(List<ValidacaoStrategy> validacoes) {
         this.validacoes = validacoes;
     }
@@ -26,7 +25,7 @@ public class ValidaSenhaUseCaseImpl implements ValidaSenhaUseCase{
     public boolean senhaValida(String senha) {
         for (ValidacaoStrategy validacao : validacoes) {
             if (!validacao.validar(senha)) {
-                return false; // Retorna no primeiro erro
+                return false;
             }
         }
         return true;

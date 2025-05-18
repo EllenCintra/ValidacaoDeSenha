@@ -44,91 +44,106 @@ public class ValidaSenhaUseCaseImplTest {
     }
 
     @Test
-    void ehValida_senhaValida_retornaVerdadeiro() {
-        // Arrange
-        String senha = "aB1!fghi9";
-        when(validacaoTamanhoMinimo.validar(senha, new ResultadoValidacao())).thenReturn(true);
-        when(validacaoDigito.validar(senha, new ResultadoValidacao())).thenReturn(true);
-        when(validacaoMinuscula.validar(senha, new ResultadoValidacao())).thenReturn(true);
-        when(validacaoMaiuscula.validar(senha, new ResultadoValidacao())).thenReturn(true);
-        when(validacaoCaractereEspecial.validar(senha, new ResultadoValidacao())).thenReturn(true);
-        when(validacaoEspacoEmBranco.validar(senha, new ResultadoValidacao())).thenReturn(true);
-        when(validacaoCaracteresRepetidos.validar(senha, new ResultadoValidacao())).thenReturn(true);
+    void validarSenha_senhaValida() {
+        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto("Abcdefgh!9");
+        String senha = senhaRequestDto.getSenha();
 
-        // Act
-        boolean resultado = validadorSenha.ehValida(senha);
+        when(validacaoTamanhoMinimo.validar(senha)).thenReturn(true);
+        when(validacaoDigito.validar(senha)).thenReturn(true);
+        when(validacaoMinuscula.validar(senha)).thenReturn(true);
+        when(validacaoMaiuscula.validar(senha)).thenReturn(true);
+        when(validacaoCaractereEspecial.validar(senha)).thenReturn(true);
+        when(validacaoEspacoEmBranco.validar(senha)).thenReturn(true);
+        when(validacaoCaracteresRepetidos.validar(senha)).thenReturn(true);
 
-        // Assert
-        assertTrue(resultado);
+        ValidacaoSenhaResponseDto resultado = validadorSenha.validarSenha(senhaRequestDto);
+
+        assertTrue(resultado.isSenhaValida());
+    }
+
+
+    @Test
+    void validarSenha_senhaInvalida_erroCaracterEspecial() {
+        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto("Abcdefghi9");
+        String senha = senhaRequestDto.getSenha();
+
+        when(validacaoCaractereEspecial.validar(senha)).thenReturn(false);
+
+        ValidacaoSenhaResponseDto resultado = validadorSenha.validarSenha(senhaRequestDto);
+
+        assertFalse(resultado.isSenhaValida());
     }
 
     @Test
-    void ehValida_senhaInvalida_retornaFalso() {
-        // Arrange
-        String senha = "abc";
-        when(validacaoTamanhoMinimo.validar(senha, new ResultadoValidacao())).thenReturn(false);
+    void validarSenha_senhaInvalida_erroCaracterRepetidos_CaseSensitive() {
+        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto("AAbcdefghi!9");
+        String senha = senhaRequestDto.getSenha();
 
-        // Act
-        boolean resultado = validadorSenha.ehValida(senha);
+        when(validacaoCaracteresRepetidos.validar(senha)).thenReturn(false);
 
-        // Assert
-        assertFalse(resultado);
+        ValidacaoSenhaResponseDto resultado = validadorSenha.validarSenha(senhaRequestDto);
+
+        assertFalse(resultado.isSenhaValida());
     }
 
     @Test
-    void verificarValidade_senhaValida_retornaSemErros() {
-        // Arrange
-        String senha = "aB1!fghi9";
-        when(validacaoTamanhoMinimo.validar(senha, new ResultadoValidacao())).thenReturn(true);
-        when(validacaoDigito.validar(senha, new ResultadoValidacao())).thenReturn(true);
-        when(validacaoMinuscula.validar(senha, new ResultadoValidacao())).thenReturn(true);
-        when(validacaoMaiuscula.validar(senha, new ResultadoValidacao())).thenReturn(true);
-        when(validacaoCaractereEspecial.validar(senha, new ResultadoValidacao())).thenReturn(true);
-        when(validacaoEspacoEmBranco.validar(senha, new ResultadoValidacao())).thenReturn(true);
-        when(validacaoCaracteresRepetidos.validar(senha, new ResultadoValidacao())).thenReturn(true);
+    void validarSenha_senhaInvalida_erroDeDigito() {
+        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto("Abcdefghi!");
+        String senha = senhaRequestDto.getSenha();
 
-        // Act
-        ResultadoValidacao resultado = validadorSenha.verificarValidade(senha);
+        when(validacaoDigito.validar(senha)).thenReturn(false);
 
-        // Assert
-        assertTrue(resultado.ehValido());
-        assertTrue(resultado.getErros().isEmpty());
+        ValidacaoSenhaResponseDto resultado = validadorSenha.validarSenha(senhaRequestDto);
+
+        assertFalse(resultado.isSenhaValida());
     }
 
     @Test
-    void verificarValidade_senhaInvalida_retornaErroDeTamanho() {
-        // Arrange
-        String senha = "abc";
-        ResultadoValidacao resultadoEsperado = new ResultadoValidacao();
-        resultadoEsperado.adicionarErro("A senha deve ter no mínimo 9 caracteres.");
-        when(validacaoTamanhoMinimo.validar(senha, new ResultadoValidacao())).thenReturn(false);
-        when(validacaoTamanhoMinimo.validar(senha, new ResultadoValidacao())).thenReturn(false);
+    void validarSenha_senhaInvalida_erroEspacoEmBranco() {
+        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto("Aabcdefg !9");
+        String senha = senhaRequestDto.getSenha();
 
+        when(validacaoEspacoEmBranco.validar(senha)).thenReturn(false);
 
-        // Act
-        ResultadoValidacao resultado = validadorSenha.verificarValidade(senha);
+        ValidacaoSenhaResponseDto resultado = validadorSenha.validarSenha(senhaRequestDto);
 
-        // Assert
-        assertFalse(resultado.ehValido());
-        assertEquals(1, resultado.getErros().size());
-        assertEquals("A senha deve ter no mínimo 9 caracteres.", resultado.getErros().get(0));
+        assertFalse(resultado.isSenhaValida());
     }
 
     @Test
-    void verificarValidade_senhaInvalida_retornaErroDeDigito() {
-        // Arrange
-        String senha = "abcdefghi!";
-        ResultadoValidacao resultadoEsperado = new ResultadoValidacao();
-        resultadoEsperado.adicionarErro("A senha deve conter ao menos 1 dígito.");
-        when(validacaoTamanhoMinimo.validar(senha, new ResultadoValidacao())).thenReturn(true);
-        when(validacaoDigito.validar(senha, new ResultadoValidacao())).thenReturn(false);
+    void validarSenha_senhaInvalida_erroMaiuscula() {
+        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto("abcdefg!9");
+        String senha = senhaRequestDto.getSenha();
 
-        // Act
-        ResultadoValidacao resultado = validadorSenha.verificarValidade(senha);
+        when(validacaoMaiuscula.validar(senha)).thenReturn(false);
 
-        // Assert
-        assertFalse(resultado.ehValido());
-        assertEquals(1, resultado.getErros().size());
-        assertEquals("A senha deve conter ao menos 1 dígito.", resultado.getErros().get(0));
+        ValidacaoSenhaResponseDto resultado = validadorSenha.validarSenha(senhaRequestDto);
+
+        assertFalse(resultado.isSenhaValida());
+    }
+
+    @Test
+    void validarSenha_senhaInvalida_erroMinuscula() {
+        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto("A1234567!9");
+        String senha = senhaRequestDto.getSenha();
+
+        when(validacaoMinuscula.validar(senha)).thenReturn(false);
+
+        ValidacaoSenhaResponseDto resultado = validadorSenha.validarSenha(senhaRequestDto);
+
+        assertFalse(resultado.isSenhaValida());
+    }
+
+
+    @Test
+    void validarSenha_senhaInvalida_erroDeTamanho() {
+        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto("Abcdefgh!");
+        String senha = senhaRequestDto.getSenha();
+
+        when(validacaoTamanhoMinimo.validar(senha)).thenReturn(false);
+
+        ValidacaoSenhaResponseDto resultado = validadorSenha.validarSenha(senhaRequestDto);
+
+        assertFalse(resultado.isSenhaValida());
     }
 }

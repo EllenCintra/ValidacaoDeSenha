@@ -2,14 +2,13 @@ package com.challenge.validaSenha.core.usecases;
 
 import org.springframework.stereotype.Component;
 
-// Implementação da estratégia para validar a ausência de espaços em branco
 @Component
-class ValidacaoEspacoEmBranco implements ValidacaoStrategy {
+public class ValidacaoEspacoEmBranco implements ValidacaoStrategy {
     @Override
     public boolean validar(String senha) {
-        if (senha != null && senha.chars().anyMatch(Character::isWhitespace)) {
+        if (senha == null)
             return false;
-        }
-        return true;
+
+        return !senha.chars().anyMatch(Character::isWhitespace);
     }
 }

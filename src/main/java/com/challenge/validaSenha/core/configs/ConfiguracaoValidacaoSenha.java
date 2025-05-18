@@ -1,14 +1,17 @@
-package com.challenge.validaSenha;
+package com.challenge.validaSenha.core.configs;
+
+import com.challenge.validaSenha.core.usecases.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
 @Configuration
 class ConfiguracaoValidacaoSenha {
 
-    // Bean para o validador de senha (adaptador que implementa a porta)
     @Bean
-    public ValidadorSenhaPort validadorSenha(List<ValidacaoStrategy> validacoes) {
-        return new ValidadorSenha(validacoes);
+    public ValidaSenhaUseCaseImpl validadorSenha(List<ValidacaoStrategy> validacoes) {
+        return new ValidaSenhaUseCaseImpl(validacoes);
     }
 
     @Bean
