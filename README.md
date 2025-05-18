@@ -2,8 +2,8 @@ Validacao de Senha API
 
 Como executar o projeto?
 Pré-requisitos:
-Java 17
-Maven 3.8.4 ou superior
+Java 24
+Maven 3.9.7 ou 3.9.9
 
 Clonar o Repositório:
 git clone https://github.com/EllenCintra/ValidacaoDeSenha.git
