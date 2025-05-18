@@ -1,13 +1,12 @@
-package com.challenge.validaSenha.core.configs;
+package com.challenge.validaSenha.core.usecases;
 
-import com.challenge.validaSenha.core.usecases.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
 @Configuration
-class ConfiguracaoValidacaoSenha {
+public class ConfiguracaoValidacaoSenha {
 
     @Bean
     public ValidaSenhaUseCaseImpl validadorSenha(List<ValidacaoStrategy> validacoes) {
