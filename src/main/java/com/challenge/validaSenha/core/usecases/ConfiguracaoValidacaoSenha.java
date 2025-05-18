@@ -9,7 +9,7 @@ import java.util.List;
 public class ConfiguracaoValidacaoSenha {
 
     @Bean
-    public ValidaSenhaUseCaseImpl validadorSenha(List<ValidacaoStrategy> validacoes) {
+    public ValidaSenhaUseCaseImpl validaSenhaUseCase(List<ValidacaoStrategy> validacoes) {
         return new ValidaSenhaUseCaseImpl(validacoes);
     }
 

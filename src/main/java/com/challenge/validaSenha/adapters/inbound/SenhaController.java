@@ -1,5 +1,6 @@
 package com.challenge.validaSenha.adapters.inbound;
 
+import com.challenge.validaSenha.core.usecases.ConfiguracaoValidacaoSenha;
 import com.challenge.validaSenha.core.usecases.ValidaSenhaUseCase;
 import com.challenge.validaSenha.ports.input.ValidacaoSenhaRequestDto;
 import com.challenge.validaSenha.ports.output.Data;
