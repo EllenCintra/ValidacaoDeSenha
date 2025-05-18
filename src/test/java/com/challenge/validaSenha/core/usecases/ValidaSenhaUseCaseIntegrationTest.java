@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         ValidacaoEspacoEmBranco.class,
         ValidacaoCaracteresRepetidos.class
 })
-public class ValidaSenhaUseCaseImplIntegrationTest {
+public class ValidaSenhaUseCaseIntegrationTest {
 
     @Autowired
     private ValidaSenhaUseCase validaSenhaUseCase;

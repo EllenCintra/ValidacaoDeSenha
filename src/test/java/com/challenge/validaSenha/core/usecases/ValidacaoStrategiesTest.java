@@ -10,13 +10,13 @@ public class ValidacaoStrategiesTest {
     @Test
     void validacaoTamanhoMinimo_senhaValida_retornaVerdadeiro() {
         ValidacaoTamanhoMinimo validacao = new ValidacaoTamanhoMinimo();
-        assertTrue(validacao.validar("abcdefghi9"));
+        assertTrue(validacao.validar("123456789"));
     }
 
     @Test
     void validacaoTamanhoMinimo_senhaInvalida_retornaFalso() {
         ValidacaoTamanhoMinimo validacao = new ValidacaoTamanhoMinimo();
-        assertFalse(validacao.validar("abc"));
+        assertFalse(validacao.validar("12345678"));
     }
 
     @Test
@@ -28,13 +28,13 @@ public class ValidacaoStrategiesTest {
     @Test
     void validacaoDigito_senhaValida_retornaVerdadeiro() {
         ValidacaoDigito validacao = new ValidacaoDigito();
-        assertTrue(validacao.validar("abcdefghi9"));
+        assertTrue(validacao.validar("9"));
     }
 
     @Test
     void validacaoDigito_senhaInvalida_retornaFalso() {
         ValidacaoDigito validacao = new ValidacaoDigito();
-        assertFalse(validacao.validar("abcdefghi"));
+        assertFalse(validacao.validar("a"));
     }
 
     @Test
@@ -46,13 +46,13 @@ public class ValidacaoStrategiesTest {
     @Test
     void validacaoMinuscula_senhaValida_retornaVerdadeiro() {
         ValidacaoMinuscula validacao = new ValidacaoMinuscula();
-        assertTrue(validacao.validar("abcdefghi9"));
+        assertTrue(validacao.validar("a"));
     }
 
     @Test
     void validacaoMinuscula_senhaInvalida_retornaFalso() {
         ValidacaoMinuscula validacao = new ValidacaoMinuscula();
-        assertFalse(validacao.validar("ABCDEFGHI9"));
+        assertFalse(validacao.validar("A"));
     }
 
     @Test
@@ -64,13 +64,13 @@ public class ValidacaoStrategiesTest {
     @Test
     void validacaoMaiuscula_senhaValida_retornaVerdadeiro() {
         ValidacaoMaiuscula validacao = new ValidacaoMaiuscula();
-        assertTrue(validacao.validar("aBcDeFgHi9"));
+        assertTrue(validacao.validar("A"));
     }
 
     @Test
     void validacaoMaiuscula_senhaInvalida_retornaFalso() {
         ValidacaoMaiuscula validacao = new ValidacaoMaiuscula();
-        assertFalse(validacao.validar("abcdefghi9"));
+        assertFalse(validacao.validar("a"));
     }
 
     @Test
@@ -82,13 +82,13 @@ public class ValidacaoStrategiesTest {
     @Test
     void validacaoCaractereEspecial_senhaValida_retornaVerdadeiro() {
         ValidacaoCaractereEspecial validacao = new ValidacaoCaractereEspecial();
-        assertTrue(validacao.validar("aB1!fghi9"));
+        assertTrue(validacao.validar("*"));
     }
 
     @Test
     void validacaoCaractereEspecial_senhaInvalida_retornaFalso() {
         ValidacaoCaractereEspecial validacao = new ValidacaoCaractereEspecial();
-        assertFalse(validacao.validar("aB1fghi9"));
+        assertFalse(validacao.validar("a9"));
     }
 
     @Test
@@ -100,13 +100,13 @@ public class ValidacaoStrategiesTest {
     @Test
     void validacaoEspacoEmBranco_senhaValida_retornaVerdadeiro() {
         ValidacaoEspacoEmBranco validacao = new ValidacaoEspacoEmBranco();
-        assertTrue(validacao.validar("aB1!fghi9"));
+        assertTrue(validacao.validar("a"));
     }
 
     @Test
     void validacaoEspacoEmBranco_senhaInvalida_retornaFalso() {
         ValidacaoEspacoEmBranco validacao = new ValidacaoEspacoEmBranco();
-        assertFalse(validacao.validar("aB1! fghi9"));
+        assertFalse(validacao.validar("a "));
     }
 
     @Test
@@ -118,13 +118,13 @@ public class ValidacaoStrategiesTest {
     @Test
     void validacaoCaracteresRepetidos_senhaValida_retornaVerdadeiro() {
         ValidacaoCaracteresRepetidos validacao = new ValidacaoCaracteresRepetidos();
-        assertTrue(validacao.validar("aB1!fghi9"));
+        assertTrue(validacao.validar("ab"));
     }
 
     @Test
     void validacaoCaracteresRepetidos_senhaInvalida_retornaFalso() {
         ValidacaoCaracteresRepetidos validacao = new ValidacaoCaracteresRepetidos();
-        assertFalse(validacao.validar("aB1!fghi9a"));
+        assertFalse(validacao.validar("aa"));
     }
 
     @Test

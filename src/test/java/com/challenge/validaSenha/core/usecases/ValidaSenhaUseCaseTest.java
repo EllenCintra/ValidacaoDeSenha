@@ -13,7 +13,7 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-public class ValidaSenhaUseCaseImplTest {
+public class ValidaSenhaUseCaseTest {
 
     @Mock
     private ValidacaoTamanhoMinimo validacaoTamanhoMinimo;
@@ -45,7 +45,7 @@ public class ValidaSenhaUseCaseImplTest {
 
     @Test
     void validarSenha_senhaValida() {
-        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto("Abcdefgh!9");
+        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto("senhaRequest");
         String senha = senhaRequestDto.getSenha();
 
         when(validacaoTamanhoMinimo.validar(senha)).thenReturn(true);
@@ -64,7 +64,7 @@ public class ValidaSenhaUseCaseImplTest {
 
     @Test
     void validarSenha_senhaInvalida_erroCaracterEspecial() {
-        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto("Abcdefghi9");
+        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto("senhaRequest");
         String senha = senhaRequestDto.getSenha();
 
         when(validacaoCaractereEspecial.validar(senha)).thenReturn(false);
@@ -76,7 +76,7 @@ public class ValidaSenhaUseCaseImplTest {
 
     @Test
     void validarSenha_senhaInvalida_erroCaracterRepetidos_CaseSensitive() {
-        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto("AAbcdefghi!9");
+        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto("senhaRequest");
         String senha = senhaRequestDto.getSenha();
 
         when(validacaoCaracteresRepetidos.validar(senha)).thenReturn(false);
@@ -88,7 +88,7 @@ public class ValidaSenhaUseCaseImplTest {
 
     @Test
     void validarSenha_senhaInvalida_erroDeDigito() {
-        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto("Abcdefghi!");
+        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto("senhaRequest");
         String senha = senhaRequestDto.getSenha();
 
         when(validacaoDigito.validar(senha)).thenReturn(false);
@@ -100,7 +100,7 @@ public class ValidaSenhaUseCaseImplTest {
 
     @Test
     void validarSenha_senhaInvalida_erroEspacoEmBranco() {
-        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto("Aabcdefg !9");
+        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto("senhaRequest");
         String senha = senhaRequestDto.getSenha();
 
         when(validacaoEspacoEmBranco.validar(senha)).thenReturn(false);
@@ -112,7 +112,7 @@ public class ValidaSenhaUseCaseImplTest {
 
     @Test
     void validarSenha_senhaInvalida_erroMaiuscula() {
-        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto("abcdefg!9");
+        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto("senhaRequest");
         String senha = senhaRequestDto.getSenha();
 
         when(validacaoMaiuscula.validar(senha)).thenReturn(false);
@@ -124,7 +124,7 @@ public class ValidaSenhaUseCaseImplTest {
 
     @Test
     void validarSenha_senhaInvalida_erroMinuscula() {
-        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto("A1234567!9");
+        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto("senhaRequest");
         String senha = senhaRequestDto.getSenha();
 
         when(validacaoMinuscula.validar(senha)).thenReturn(false);
@@ -137,7 +137,7 @@ public class ValidaSenhaUseCaseImplTest {
 
     @Test
     void validarSenha_senhaInvalida_erroDeTamanho() {
-        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto("Abcdefgh!");
+        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto("senhaRequest");
         String senha = senhaRequestDto.getSenha();
 
         when(validacaoTamanhoMinimo.validar(senha)).thenReturn(false);
