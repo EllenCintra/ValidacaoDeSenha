@@ -1,4 +1,4 @@
-Mpackage com.challenge.validaSenha.adapters.inbound;
+package com.challenge.validaSenha.adapters.inbound;
 
 public class Data<T> {
     private T data;
