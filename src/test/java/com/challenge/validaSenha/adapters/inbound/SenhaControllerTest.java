@@ -1,9 +1,9 @@
 package com.challenge.validaSenha.adapters.inbound;
 
-import com.challenge.validaSenha.core.usecases.ValidaSenhaUseCase;
-import com.challenge.validaSenha.ports.input.ValidacaoSenhaRequestDto;
-import com.challenge.validaSenha.ports.output.Data;
-import com.challenge.validaSenha.ports.output.ValidacaoSenhaResponseDto;
+import com.challenge.validaSenha.ports.ValidaSenhaPort;
+import com.challenge.validaSenha.core.dtos.ValidacaoSenhaRequestDto;
+import com.challenge.validaSenha.core.dtos.Data;
+import com.challenge.validaSenha.core.dtos.ValidacaoSenhaResponseDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 public class SenhaControllerTest {
 
     @Mock
-    private ValidaSenhaUseCase validaSenhaUseCase;
+    private ValidaSenhaPort validaSenhaUseCase;
 
     @InjectMocks
     private SenhaController senhaController;

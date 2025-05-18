@@ -1,4 +1,4 @@
-package com.challenge.validaSenha.ports.input;
+package com.challenge.validaSenha.core.dtos;
 
 import jakarta.validation.constraints.NotBlank;
 

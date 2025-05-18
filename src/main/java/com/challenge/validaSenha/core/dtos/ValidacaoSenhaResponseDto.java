@@ -1,4 +1,4 @@
-package com.challenge.validaSenha.ports.output;
+package com.challenge.validaSenha.core.dtos;
 
 public class ValidacaoSenhaResponseDto {
     private boolean senhaValida;

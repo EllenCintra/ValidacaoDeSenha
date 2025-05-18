@@ -1,7 +1,7 @@
 package com.challenge.validaSenha.core.usecases;
 
-import com.challenge.validaSenha.ports.input.ValidacaoSenhaRequestDto;
-import com.challenge.validaSenha.ports.output.ValidacaoSenhaResponseDto;
+import com.challenge.validaSenha.core.dtos.ValidacaoSenhaRequestDto;
+import com.challenge.validaSenha.core.dtos.ValidacaoSenhaResponseDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -31,12 +31,12 @@ public class ValidaSenhaUseCaseImplTest {
     private ValidacaoCaracteresRepetidos validacaoCaracteresRepetidos;
 
     @InjectMocks
-    private ValidaSenhaUseCaseImpl validadorSenha;
+    private ValidaSenhaUseCase validadorSenha;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        validadorSenha = new ValidaSenhaUseCaseImpl(Arrays.asList(
+        validadorSenha = new ValidaSenhaUseCase(Arrays.asList(
                 validacaoTamanhoMinimo, validacaoDigito, validacaoMinuscula,
                 validacaoMaiuscula, validacaoCaractereEspecial, validacaoEspacoEmBranco,
                 validacaoCaracteresRepetidos

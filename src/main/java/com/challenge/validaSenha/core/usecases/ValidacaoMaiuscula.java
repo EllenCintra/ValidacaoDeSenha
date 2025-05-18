@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ValidacaoMaiuscula implements ValidacaoStrategy {
+
     @Override
     public boolean validar(String senha) {
         if (senha != null && senha.chars().anyMatch(Character::isUpperCase)) {

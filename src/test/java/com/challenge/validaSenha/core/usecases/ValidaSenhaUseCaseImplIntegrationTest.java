@@ -1,7 +1,7 @@
 package com.challenge.validaSenha.core.usecases;
 
-import com.challenge.validaSenha.ports.input.ValidacaoSenhaRequestDto;
-import com.challenge.validaSenha.ports.output.ValidacaoSenhaResponseDto;
+import com.challenge.validaSenha.core.dtos.ValidacaoSenhaRequestDto;
+import com.challenge.validaSenha.core.dtos.ValidacaoSenhaResponseDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 @ContextConfiguration(classes = {
-        ValidaSenhaUseCaseImpl.class,
+        ValidaSenhaUseCase.class,
         ValidacaoTamanhoMinimo.class,
         ValidacaoDigito.class,
         ValidacaoMinuscula.class,
@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ValidaSenhaUseCaseImplIntegrationTest {
 
     @Autowired
-    private ValidaSenhaUseCaseImpl validaSenhaUseCase;
+    private ValidaSenhaUseCase validaSenhaUseCase;
 
     @BeforeEach
     void setUp() {

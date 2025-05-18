@@ -1,10 +1,9 @@
 package com.challenge.validaSenha.adapters.inbound;
 
-import com.challenge.validaSenha.core.usecases.ConfiguracaoValidacaoSenha;
-import com.challenge.validaSenha.core.usecases.ValidaSenhaUseCase;
-import com.challenge.validaSenha.ports.input.ValidacaoSenhaRequestDto;
-import com.challenge.validaSenha.ports.output.Data;
-import com.challenge.validaSenha.ports.output.ValidacaoSenhaResponseDto;
+import com.challenge.validaSenha.core.dtos.Data;
+import com.challenge.validaSenha.core.dtos.ValidacaoSenhaRequestDto;
+import com.challenge.validaSenha.core.dtos.ValidacaoSenhaResponseDto;
+import com.challenge.validaSenha.ports.ValidaSenhaPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SenhaController {
 
-    private final ValidaSenhaUseCase validaSenhaUseCase;
+    private final ValidaSenhaPort validaSenhaUseCase;
 
-    public SenhaController(ValidaSenhaUseCase validaSenhaUseCase) {
+    public SenhaController(ValidaSenhaPort validaSenhaUseCase) {
         this.validaSenhaUseCase = validaSenhaUseCase;
     }
 
