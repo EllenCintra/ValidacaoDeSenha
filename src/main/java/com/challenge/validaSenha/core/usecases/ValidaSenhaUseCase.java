@@ -24,6 +24,9 @@ public class ValidaSenhaUseCase implements ValidaSenhaPort {
     }
 
     public boolean senhaValida(String senha) {
+        if (senha == null || senha.isEmpty())
+            return false;
+
         for (ValidacaoStrategy validacao : validacoes) {
             if (!validacao.validar(senha)) {
                 return false;

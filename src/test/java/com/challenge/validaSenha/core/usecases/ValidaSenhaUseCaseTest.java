@@ -146,4 +146,22 @@ public class ValidaSenhaUseCaseTest {
 
         assertFalse(resultado.isSenhaValida());
     }
+
+    @Test
+    void validarSenha_senhaNula() {
+        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto(null);
+
+        ValidacaoSenhaResponseDto resultado = validadorSenha.validarSenha(senhaRequestDto);
+
+        assertFalse(resultado.isSenhaValida());
+    }
+
+    @Test
+    void validarSenha_senhaVazia() {
+        ValidacaoSenhaRequestDto senhaRequestDto = new ValidacaoSenhaRequestDto("");
+
+        ValidacaoSenhaResponseDto resultado = validadorSenha.validarSenha(senhaRequestDto);
+
+        assertFalse(resultado.isSenhaValida());
+    }
 }

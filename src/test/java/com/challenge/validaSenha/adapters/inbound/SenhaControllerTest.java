@@ -18,7 +18,7 @@ import static org.mockito.Mockito.when;
 public class SenhaControllerTest {
 
     @Mock
-    private ValidaSenhaPort validaSenhaUseCase;
+    private ValidaSenhaPort validaSenhaPort;
 
     @InjectMocks
     private SenhaController senhaController;
@@ -32,7 +32,7 @@ public class SenhaControllerTest {
     public void validaSenha_deveRetornarStatusOk_senhaTrue_corpoComData() {
         ValidacaoSenhaRequestDto requestDto = new ValidacaoSenhaRequestDto("senhaValida");
         ValidacaoSenhaResponseDto responseDto = new ValidacaoSenhaResponseDto(true);
-        when(validaSenhaUseCase.validarSenha(requestDto)).thenReturn(responseDto);
+        when(validaSenhaPort.validarSenha(requestDto)).thenReturn(responseDto);
 
         ResponseEntity<Data<ValidacaoSenhaResponseDto>> responseEntity = senhaController.validaSenha(requestDto);
 
@@ -45,7 +45,7 @@ public class SenhaControllerTest {
     public void validaSenha_deveRetornarStatusOk_senhaFalse_corpoComData() {
         ValidacaoSenhaRequestDto requestDto = new ValidacaoSenhaRequestDto("senhaValida");
         ValidacaoSenhaResponseDto responseDto = new ValidacaoSenhaResponseDto(false);
-        when(validaSenhaUseCase.validarSenha(requestDto)).thenReturn(responseDto);
+        when(validaSenhaPort.validarSenha(requestDto)).thenReturn(responseDto);
 
         ResponseEntity<Data<ValidacaoSenhaResponseDto>> responseEntity = senhaController.validaSenha(requestDto);
 

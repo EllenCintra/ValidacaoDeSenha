@@ -1,10 +1,7 @@
 package com.challenge.validaSenha.core.dtos;
 
-import jakarta.validation.constraints.NotBlank;
-
 public class ValidacaoSenhaRequestDto {
 
-    @NotBlank
     private String senha;
 
     public ValidacaoSenhaRequestDto(String senha) {

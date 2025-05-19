@@ -13,16 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SenhaController {
 
-    private final ValidaSenhaPort validaSenhaUseCase;
+    private final ValidaSenhaPort validaSenhaPort;
 
     public SenhaController(ValidaSenhaPort validaSenhaUseCase) {
-        this.validaSenhaUseCase = validaSenhaUseCase;
+        this.validaSenhaPort = validaSenhaUseCase;
     }
 
     @PostMapping("/validacao-senha")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Data<ValidacaoSenhaResponseDto>> validaSenha(@RequestBody ValidacaoSenhaRequestDto senhaRequest) {
-        ValidacaoSenhaResponseDto senhaValida = validaSenhaUseCase.validarSenha(senhaRequest);
+        ValidacaoSenhaResponseDto senhaValida = validaSenhaPort.validarSenha(senhaRequest);
         return ResponseEntity.status(HttpStatus.OK).body(new Data<>(senhaValida));
     }
 }
