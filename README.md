@@ -42,7 +42,7 @@ A API estará disponível em http://localhost:8080.
 
 - Validação de Caracteres Repetidos:
 
-    - Premissa: A validação de caracteres repetidos é case-sensitive. Por exemplo, "Aa" não considera como caracteres repetidos.
+    - Premissa: A validação de caracteres repetidos é case-sensitive. Por exemplo, "Aa" não é considerado caracteres repetidos.
 
 - Tratamento de Erros:
 
