@@ -15,7 +15,7 @@ mvn clean install
 Executar o Projeto:
 mvn spring-boot:run
 
-## Como usar a api de Validação de Senha?
+## Como usar a api Validação de Senha?
 
 Requisição
 Método: POST
