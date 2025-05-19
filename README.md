@@ -15,11 +15,7 @@ mvn clean install
 Executar o Projeto:
 mvn spring-boot:run
 
-## Acessar a API:
-
-A API estará disponível em http://localhost:8080.
-
-## Como usar o endpoint de Validação de Senha?
+## Como usar a api de Validação de Senha?
 
 Requisição
 Método: POST
