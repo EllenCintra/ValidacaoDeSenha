@@ -56,7 +56,7 @@ senhaValida: Um valor booleano que indica se a senha é válida (true) ou invál
 
 - Injeção de Dependência: O Spring Framework é utilizado para gerenciar a criação e injeção de dependências entre os componentes da aplicação. Isso promove um código mais desacoplado e testável.
 
-- Inversão de Dependência: Módulos de alto nível,que definem a lógica principal da aplicação, não devem "conhecer" ou depender diretamente dos módulos de baixo nível, que fornecem a implementação concreta. Ambos devem depender de uma abstração comum, permitindo uma maior flexibilidade na substituição de implementações sem afetar a lógica principal.
+- Inversão de Dependência: Módulos de alto nível, que definem a lógica principal da aplicação, não devem "conhecer" ou depender diretamente dos módulos de baixo nível, que fornecem a implementação concreta. Ambos devem depender de uma abstração comum, permitindo uma maior flexibilidade na substituição de implementações sem afetar a lógica principal.
 
 - Testes Automatizados: A aplicação inclui testes unitários e de integração para garantir a qualidade e o correto funcionamento da lógica de validação e da API.
 
