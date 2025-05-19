@@ -17,7 +17,6 @@ mvn spring-boot:run
 
 ## Como usar a api Validação de Senha?
 
-Requisição
 Método: POST
 
 URL: http://localhost:8080/validacao-senha
@@ -27,16 +26,16 @@ Header: Content-Type: application/json
 Body: Um objeto JSON com o campo "senha":
 ```c#
 {
-"senha": "suaSenhaAqui"
+    "senha": "suaSenhaAqui"
 }
 ```
 Resposta
 A API sempre retorna o código de status HTTP 200 OK. O corpo da resposta é um objeto JSON com o seguinte formato:
 ```c#
 {
-"data": {
-"senhaValida": true/false
-}
+    "data": {
+        "senhaValida": true/false
+    }
 }
 ```
 senhaValida: Um valor booleano que indica se a senha é válida (true) ou inválida (false).
